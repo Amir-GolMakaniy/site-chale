@@ -14,7 +14,7 @@
         class="p-10 mt-4 flex items-center justify-between rounded-2xl bg-zinc-50 shadow-xl dark:border-zinc-700 dark:bg-zinc-900">
     <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left"/>
 
-    <a href="{{ route('home') }}" class="lg:mx-0 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0"
+    <a href="{{ route('admin-home') }}" class="lg:mx-0 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0"
        wire:navigate.hover>
         <x-app-logo/>
     </a>
@@ -100,9 +100,10 @@
 <div class="hidden lg:flex justify-center">
     <div class="bg-zinc-100 mb-4 dark:bg-zinc-950 w-11/12 rounded-ee-3xl rounded-es-3xl p-6 flex items-center justify-center">
         <nav class="hidden md:flex space-x-10">
-            <a href="{{ route('home') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">خانه</a>
-            <a href="{{ route('article-index') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">مقالات</a>
-            <a href="#" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">تماس با ما</a>
+            <flux:button-or-link href="{{ route('home') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">خانه</flux:button-or-link>
+            <flux:button-or-link href="{{ route('article-index') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">مقالات</flux:button-or-link>
+            <flux:button-or-link href="{{ route('article-create') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">ساخت مقاله</flux:button-or-link>
+            <flux:button-or-link href="#" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">تماس با ما</flux:button-or-link>
         </nav>
     </div>
 </div>
