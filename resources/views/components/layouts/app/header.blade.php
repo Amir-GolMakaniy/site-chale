@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'سایت چاله' }}</title>
-    {{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     @include('partials.head')
 </head>
 
@@ -27,16 +26,21 @@
     </form>
 
     <div class="flex space-x-1">
-        <flux:button x-data="{ themes: ['system', 'light', 'dark'], index: 0 }"
-                     @click="index = (index + 1) % themes.length; $flux.appearance = themes[index]"
-                     class="cursor-pointer">
-            <template x-if="themes[index] === 'system'">
+        <flux:button
+                x-data="{
+        themes: ['system', 'light', 'dark'],
+        index: ['system', 'light', 'dark'].indexOf($flux.appearance)
+    }"
+                @click="index = (index + 1) % themes.length; $flux.appearance = themes[index]"
+                class="cursor-pointer"
+        >
+            <template x-if="themes[index] == 'system'">
                 <flux:icon.computer-desktop/>
             </template>
-            <template x-if="themes[index] === 'light'">
+            <template x-if="themes[index] == 'light'">
                 <flux:icon.sun/>
             </template>
-            <template x-if="themes[index] === 'dark'">
+            <template x-if="themes[index] == 'dark'">
                 <flux:icon.moon/>
             </template>
         </flux:button>
@@ -101,7 +105,8 @@
     <div class="bg-zinc-100 mb-4 dark:bg-zinc-950 w-11/12 rounded-ee-3xl rounded-es-3xl p-6 flex items-center justify-center">
         <nav class="hidden md:flex space-x-10">
             <a href="{{ route('home') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">خانه</a>
-            <a href="{{ route('article-index') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">مقالات</a>
+            <a href="{{ route('articles-index') }}" wire:navigate.hover
+               class="dark:text-white text-black hover:text-zinc-500">مقالات</a>
             <a href="#" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">تماس با ما</a>
         </nav>
     </div>
@@ -121,7 +126,7 @@
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('خانه') }}
         </flux:navlist.item>
-        <flux:navlist.item icon="book-open-text" :href="route('article-index')"
+        <flux:navlist.item icon="book-open-text" :href="route('articles-index')"
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('مقالات') }}
         </flux:navlist.item>
@@ -140,9 +145,3 @@
         </flux:navlist.item>
     </flux:navlist>
 </flux:sidebar>
-
-{{ $slot }}
-
-@fluxScripts
-</body>
-</html>

@@ -1,13 +1,20 @@
 <div>
-    <div class="flex flex-col justify-center bg-zinc-100 p-4 mb-4 rounded-md space-y-4">
-        <div class="">
-            <img src="{{ asset('img/1.png') }}" class="rounded-lg w-full">
+    <div class="flex space-x-2">
+        <div class="w-3/4">
+            <div class="flex flex-col justify-center bg-zinc-100 dark:bg-zinc-900 p-4 rounded-md space-y-10">
+                <div class="">
+                    <img src="{{ asset('img/1.png') }}" class="rounded-lg w-full">
+                </div>
+                <div class="">
+                    <h1 class="text-4xl font-bold">{{ $article->title }}</h1>
+                </div>
+                <div class="">
+                    <p class="text-2xl">{{ $article->content }}</p>
+                </div>
+            </div>
         </div>
-        <div class="">
-            <h1 class="text-4xl font-bold">{{ $article->title }}</h1>
-        </div>
-        <div class="">
-            <p class="text-2xl">{{ $article->body }}</p>
+        <div class="w-1/4">
+            <livewire:layouts.sidebar/>
         </div>
     </div>
 </div>

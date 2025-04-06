@@ -41,16 +41,6 @@
             </template>
         </flux:button>
 
-        @guest
-            <flux:button href="{{ route('login') }}" wire:navigate.hover>
-                ورود
-            </flux:button>
-            <flux:button href="{{ route('register') }}" wire:navigate.hover>
-                عضویت
-                <flux:icon.user-plus/>
-            </flux:button>
-        @endguest
-
         @auth
             <flux:dropdown position="top" align="end">
                 <flux:profile
@@ -100,10 +90,15 @@
 <div class="hidden lg:flex justify-center">
     <div class="bg-zinc-100 mb-4 dark:bg-zinc-950 w-11/12 rounded-ee-3xl rounded-es-3xl p-6 flex items-center justify-center">
         <nav class="hidden md:flex space-x-10">
-            <flux:button-or-link href="{{ route('home') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">خانه</flux:button-or-link>
-            <flux:button-or-link href="{{ route('article-index') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">مقالات</flux:button-or-link>
-            <flux:button-or-link href="{{ route('article-create') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">ساخت مقاله</flux:button-or-link>
-            <flux:button-or-link href="#" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">تماس با ما</flux:button-or-link>
+            <flux:button-or-link href="{{ route('admin-home') }}" wire:navigate.hover
+                                 class="dark:text-white text-black hover:text-zinc-500">خانه
+            </flux:button-or-link>
+            <flux:button-or-link href="{{ route('articles-index') }}" wire:navigate.hover
+                                 class="dark:text-white text-black hover:text-zinc-500">مقالات
+            </flux:button-or-link>
+            <flux:button-or-link href="{{ route('articles-create') }}" wire:navigate.hover
+                                 class="dark:text-white text-black hover:text-zinc-500">ساخت مقاله
+            </flux:button-or-link>
         </nav>
     </div>
 </div>
@@ -112,30 +107,30 @@
               class="lg:hidden border-r border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
     <flux:sidebar.toggle class="lg:hidden" icon="x-mark"/>
 
-    <a href="{{ route('home') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse"
+    <a href="{{ route('admin-home') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse"
        wire:navigate.hover>
         <x-app-logo/>
     </a>
 
     <flux:navlist variant="outline">
-        <flux:navlist.item icon="home" :href="route('home')"
+        <flux:navlist.item icon="home" :href="route('admin-home')"
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('خانه') }}
         </flux:navlist.item>
-        <flux:navlist.item icon="book-open-text" :href="route('article-index')"
+        <flux:navlist.item icon="book-open-text" :href="route('articles-index')"
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('مقالات') }}
         </flux:navlist.item>
-        <flux:navlist.item icon="phone" :href="route('home')"
+        <flux:navlist.item icon="phone" :href="route('articles-create')"
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
-            {{ __('ارتباط با ما') }}
+            {{ __('ساخت مقاله') }}
         </flux:navlist.item>
     </flux:navlist>
 
     <flux:spacer/>
 
     <flux:navlist variant="outline">
-        <flux:navlist.item icon="magnifying-glass" :href="route('home')"
+        <flux:navlist.item icon="magnifying-glass" :href="route('admin-home')"
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('جستجو') }}
         </flux:navlist.item>

@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Route::get('/', Home::class)->name('home');
-Route::get('/articles', Index::class)->name('article-index');
-Route::get('/articles/{article}', Show::class)->name('article-show');
+Route::get('/articles', Index::class)->name('articles-index');
+Route::get('/articles/{article}', Show::class)->name('articles-show');
 
 Route::prefix('admin')->middleware('auth')->group(function (){
 	Route::get('/', \App\Livewire\Admin\Home::class)->name('admin-home');
-	Route::get('/article/create', Create::class)->name('article-create');
-	Route::get('/article/{article}/edit', Edit::class)->name('article-edit');
+	Route::get('/article/create', Create::class)->name('articles-create');
+	Route::get('/article/{article}/edit', Edit::class)->name('articles-edit');
 });
 
 Route::view('dashboard', 'dashboard')

@@ -7,6 +7,12 @@ use Livewire\Component;
 
 class Home extends Component
 {
+
+	public function delete(Article $article)
+	{
+		$article->delete();
+	}
+
     public function render()
     {
 		$articles = Article::query()->orderByDesc('id')->get();

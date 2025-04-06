@@ -20,20 +20,20 @@
             <tbody class="">
             @foreach($articles as $article)
                 <tr class="bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 border-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-600">
-                    <th scope="row" class="px-6 py-4 font-medium text-zinc-900 whitespace-nowrap dark:text-white">
+                    <td class="px-6 py-4 font-medium text-zinc-900 whitespace-nowrap dark:text-white">
                         {{ $article->title }}
-                    </th>
-                    <th scope="row" class="px-6 py-4 font-medium text-zinc-900 whitespace-nowrap dark:text-white">
+                    </td>
+                    <td class="px-6 py-4 font-medium text-zinc-900 whitespace-nowrap dark:text-white">
                         {{ $article->author }}
-                    </th>
+                    </td>
                     <td class="flex items-center px-6 py-4">
-                        <flux:link href="{{ route('article-edit',$article->slug) }}">
-                        <flux:icon.pencil-square/>
+                        <flux:link href="{{ route('articles-edit',$article->slug) }}">
+                            <flux:icon.pencil-square/>
                         </flux:link>
                     </td>
-                    <th scope="row" class="px-6 py-4 font-medium text-zinc-900 whitespace-nowrap dark:text-white">
-                        <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">حذف</a>
-                    </th>
+                    <td class="px-6 py-4">
+                        <flux:icon.x-mark wire:click="delete({{ $article->id }})" class="cursor-pointer"/>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
