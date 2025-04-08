@@ -27,7 +27,7 @@
                         {{ $article->author }}
                     </td>
                     <td class="flex items-center px-6 py-4">
-                        <flux:link href="{{ route('articles-edit',$article->slug) }}">
+                        <flux:link href="{{ route('articles.edit',$article->slug) }}">
                             <flux:icon.pencil-square/>
                         </flux:link>
                     </td>

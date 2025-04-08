@@ -93,10 +93,10 @@
             <flux:button-or-link href="{{ route('admin-home') }}" wire:navigate.hover
                                  class="dark:text-white text-black hover:text-zinc-500">خانه
             </flux:button-or-link>
-            <flux:button-or-link href="{{ route('articles-index') }}" wire:navigate.hover
+            <flux:button-or-link href="{{ route('articles.index') }}" wire:navigate.hover
                                  class="dark:text-white text-black hover:text-zinc-500">مقالات
             </flux:button-or-link>
-            <flux:button-or-link href="{{ route('articles-create') }}" wire:navigate.hover
+            <flux:button-or-link href="{{ route('articles.create') }}" wire:navigate.hover
                                  class="dark:text-white text-black hover:text-zinc-500">ساخت مقاله
             </flux:button-or-link>
         </nav>
@@ -117,11 +117,11 @@
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('خانه') }}
         </flux:navlist.item>
-        <flux:navlist.item icon="book-open-text" :href="route('articles-index')"
+        <flux:navlist.item icon="book-open-text" :href="route('articles.index')"
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('مقالات') }}
         </flux:navlist.item>
-        <flux:navlist.item icon="phone" :href="route('articles-create')"
+        <flux:navlist.item icon="phone" :href="route('articles.create')"
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('ساخت مقاله') }}
         </flux:navlist.item>

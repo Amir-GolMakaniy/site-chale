@@ -18,12 +18,7 @@
         <x-app-logo/>
     </a>
 
-    <form action="" class="hidden lg:flex items-center">
-        <flux:button type="submit" class="cursor-pointer">
-            <flux:icon.magnifying-glass class=""/>
-        </flux:button>
-        <flux:input class="" placeholder="دنبال چی میگردی؟"/>
-    </form>
+    <livewire:layouts.search/>
 
     <div class="flex space-x-1">
         <flux:button
@@ -46,12 +41,13 @@
         </flux:button>
 
         @guest
-            <flux:button href="{{ route('login') }}" wire:navigate.hover>
-                ورود
-            </flux:button>
             <flux:button href="{{ route('register') }}" wire:navigate.hover>
                 عضویت
                 <flux:icon.user-plus/>
+            </flux:button>
+            <flux:button href="{{ route('login') }}" wire:navigate.hover>
+                ورود
+                <flux:icon.user-circle/>
             </flux:button>
         @endguest
 
@@ -105,7 +101,7 @@
     <div class="bg-zinc-100 mb-4 dark:bg-zinc-950 w-11/12 rounded-ee-3xl rounded-es-3xl p-6 flex items-center justify-center">
         <nav class="hidden md:flex space-x-10">
             <a href="{{ route('home') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">خانه</a>
-            <a href="{{ route('articles-index') }}" wire:navigate.hover
+            <a href="{{ route('articles.index') }}" wire:navigate.hover
                class="dark:text-white text-black hover:text-zinc-500">مقالات</a>
             <a href="#" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">تماس با ما</a>
         </nav>
@@ -126,7 +122,7 @@
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('خانه') }}
         </flux:navlist.item>
-        <flux:navlist.item icon="book-open-text" :href="route('articles-index')"
+        <flux:navlist.item icon="book-open-text" :href="route('articles.index')"
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('مقالات') }}
         </flux:navlist.item>
