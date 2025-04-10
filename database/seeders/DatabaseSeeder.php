@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -10,16 +11,17 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
-    {
+	/**
+	 * Seed the application's database.
+	 */
+	public function run(): void
+	{
 		User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+			'name' => 'Test User',
+			'email' => 'test@example.com',
+		]);
 
 		Article::factory(10)->create();
-    }
+		Tag::factory(10)->create();
+	}
 }

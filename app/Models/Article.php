@@ -16,7 +16,7 @@ class Article extends Model
 		'title',
 		'slug',
 		'content',
-		'author',
+		'user_id',
 	];
 
 	public function sluggable(): array
@@ -46,5 +46,10 @@ class Article extends Model
 	public function comments()
 	{
 		return $this->morphMany(Comment::class, 'commentable');
+	}
+
+	public function tags()
+	{
+		return $this->morphToMany(Tag::class, 'taggable');
 	}
 }
