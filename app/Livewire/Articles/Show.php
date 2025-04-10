@@ -10,6 +10,10 @@ class Show extends Component
 
 	public function render()
 	{
+//		$this->article->comments()->create([
+//			'user_id' => auth()->id(),
+//			'comment' => 'sadsad',
+//		]);
 		return view('livewire.articles.show');
 	}
 }

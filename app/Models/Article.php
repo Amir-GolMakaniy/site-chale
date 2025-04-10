@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
-use Database\Factories\ArticleFactory;
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-	/** @use HasFactory<ArticleFactory> */
+	/** @use HasFactory<CategoryFactory> */
 	use HasFactory, Sluggable;
 
 	protected $fillable = [
@@ -41,5 +41,10 @@ class Article extends Model
 	public function category()
 	{
 		return $this->belongsTo(Category::class);
+	}
+
+	public function comments()
+	{
+		return $this->morphMany(Comment::class, 'commentable');
 	}
 }

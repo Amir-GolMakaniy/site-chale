@@ -8,10 +8,9 @@ class Image extends Model
 {
 	protected $fillable=[
 		'path',
-		'imageable_id',
 	];
-	public function article()
+	public function imageable()
 	{
-		return $this->belongsTo(Article::class);
+		return $this->morphTo();
     }
 }

@@ -2,10 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Article;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
+ * @extends Factory<Article>
  */
 class ArticleFactory extends Factory
 {
@@ -20,6 +23,8 @@ class ArticleFactory extends Factory
 			'title' => $this->faker->title(),
 			'content' => $this->faker->text(),
 			'author' => $this->faker->name(),
+			'user_id' => User::factory(),
+			'category_id' => Category::factory(),
 		];
 	}
 }
