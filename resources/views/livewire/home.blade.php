@@ -6,6 +6,7 @@
     <div class="mt-50">
         <div class="flex items-center space-x-4">
             <flux:icon.book-open-text/>
+
             <h1 class="mb-2 text-2xl font-bold">آخرین مقالات</h1>
         </div>
         <hr>
