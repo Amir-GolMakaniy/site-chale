@@ -1,7 +1,7 @@
 <div>
     <div class="mt-10 flex items-center">
         <h1 class="text-6xl font-bold">یه مهارت پول ساز یاد بگیر</h1>
-        <img class="w-9/12 rounded-2xl border-4 border-zinc-900 dark:border-zinc-100" src="{{ asset('img/1.png') }}">
+        <img class="w-9/12 rounded-2xl border-4 border-zinc-900 dark:border-zinc-100" src="{{ asset('img/turned-gray-laptop-computer-768x512.jpg') }}" alt="">
     </div>
     <div class="mt-50">
         <div class="flex items-center space-x-4">

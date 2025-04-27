@@ -3,21 +3,25 @@
 namespace App\Livewire\Forms;
 
 use App\Models\Article;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
+use Livewire\WithFileUploads;
 
 class ArticleForm extends Form
 {
+	use WithFileUploads;
+
 	public ?Article $article;
 
-	#[Validate('required|string')]
-    public $title = "";
+	#[Validate('required|image')]
+	public $image = "";
 
 	#[Validate('required|string')]
-    public $content = "";
+	public $title = "";
 
 	#[Validate('required|string')]
-    public $author = "";
+	public $content = "";
 
 	public function set(Article $article)
 	{
@@ -26,14 +30,16 @@ class ArticleForm extends Form
 		$this->title = $article->title;
 
 		$this->content = $article->content;
-
-		$this->author = $article->author;
 	}
 
 	public function save()
 	{
 		$this->validate();
 
-		Article::query()->updateOrCreate($this->all());
+		$article = auth()->user()->articles()->updateOrCreate($this->all());
+
+		$image = Storage::url($this->image->store('img', 'public'));
+
+		$article->image()->create(['path' => $image]);
 	}
 }

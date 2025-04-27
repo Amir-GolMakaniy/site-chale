@@ -103,7 +103,6 @@
             <a href="{{ route('home') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">خانه</a>
             <a href="{{ route('articles.index') }}" wire:navigate.hover
                class="dark:text-white text-black hover:text-zinc-500">مقالات</a>
-            <a href="#" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">تماس با ما</a>
         </nav>
     </div>
 </div>

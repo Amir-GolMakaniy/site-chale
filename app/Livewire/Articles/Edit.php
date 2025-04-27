@@ -20,7 +20,7 @@ class Edit extends Component
 	{
 		$this->form->save();
 
-		return $this->redirect(route('admin-home'));
+		return $this->redirect(route('admin.home'));
 	}
 
 	public function render()

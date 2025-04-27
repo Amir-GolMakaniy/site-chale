@@ -9,13 +9,10 @@
         </a>
 
         {{-- لینک‌های سریع --}}
-        <nav class="flex flex-wrap justify-center gap-4 text-sm text-zinc-600 dark:text-zinc-300">
-            <a href="{{ route('home') }}" class="hover:text-primary-500 transition" wire:navigate.hover>درباره ما</a>
-            <a href="{{ route('home') }}" class="hover:text-primary-500 transition" wire:navigate.hover>تماس</a>
+        <nav class="flex flex-wrap justify-center gap-4 text-md text-zinc-600 dark:text-zinc-300">
+            <a href="{{ route('home') }}" class="hover:text-primary-500 transition" wire:navigate.hover>خانه</a>
             <a href="{{ route('articles.index') }}" class="hover:text-primary-500 transition"
                wire:navigate.hover>مقالات</a>
-            <a href="{{ route('home') }}" class="hover:text-primary-500 transition" wire:navigate.hover>سؤالات
-                متداول</a>
         </nav>
     </div>
 
