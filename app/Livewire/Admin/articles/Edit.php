@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Articles;
+namespace App\Livewire\Admin\articles;
 
 use App\Livewire\Forms\ArticleForm;
 use Livewire\Component;
@@ -25,6 +25,6 @@ class Edit extends Component
 
 	public function render()
 	{
-		return view('livewire.articles.edit');
+		return view('livewire.admin.articles.edit')->layout('components.layouts.admin');
 	}
 }
