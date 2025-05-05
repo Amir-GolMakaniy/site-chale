@@ -13,9 +13,9 @@ class Home extends Component
 		$article->delete();
 	}
 
-    public function render()
-    {
+	public function render()
+	{
 		$articles = Article::query()->orderByDesc('id')->get();
-        return view('livewire.admin.home',compact('articles'))->layout('components.layouts.admin');
-    }
+		return view('livewire.admin.home', compact('articles'))->layout('components.layouts.admin');
+	}
 }

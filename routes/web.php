@@ -13,9 +13,17 @@ Route::get('/articles', Index::class)->name('articles.index');
 Route::get('/articles/{article}', Show::class)->name('articles.show');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
-	Route::get('/', \App\Livewire\Admin\Home::class)->name('admin.home');
-	Route::get('/article/create', Create::class)->name('articles.create');
-	Route::get('/article/{article}/edit', Edit::class)->name('articles.edit');
+	Route::get('/', \App\Livewire\Admin\Home::class)
+		->middleware('role:admin')
+		->name('admin.home');
+
+	Route::get('/article/create', Create::class)
+		->middleware('role:admin|editor')
+		->name('articles.create');
+
+	Route::get('/article/{article}/edit', Edit::class)
+		->middleware('role:admin|editor')
+		->name('articles.edit');
 });
 
 Route::view('dashboard', 'dashboard')

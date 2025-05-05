@@ -95,6 +95,9 @@
             <flux:button-or-link href="{{ route('admin.home') }}" wire:navigate.hover
                                  class="dark:text-white text-black hover:text-zinc-500">مقالات
             </flux:button-or-link>
+            {{--            <flux:button-or-link href="{{ route('admin.users') }}" wire:navigate.hover--}}
+            {{--                                 class="dark:text-white text-black hover:text-zinc-500">کاربرها--}}
+            {{--            </flux:button-or-link>--}}
             <flux:button-or-link href="{{ route('articles.create') }}" wire:navigate.hover
                                  class="dark:text-white text-black hover:text-zinc-500">ساخت مقاله
             </flux:button-or-link>
