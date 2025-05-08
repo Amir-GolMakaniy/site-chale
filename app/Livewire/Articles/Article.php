@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Article extends Component
 {
-	public \App\Models\Article $article;
+	public $article;
 
 	public function render()
 	{

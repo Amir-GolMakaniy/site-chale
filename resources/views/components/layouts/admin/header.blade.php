@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'سایت چاله' }}</title>
     @include('partials.head')
+    <script src="https://cdn.tiny.cloud/1/ro3pwo9zrlv8pu4e6uaqvhjbho0zl7lggpk8lt1ty3jant9c/tinymce/7/tinymce.min.js"
+            referrerpolicy="origin"></script>
 </head>
 
 <body class="bg-white dark:bg-zinc-800 mx-auto w-11/12 lg:w-9/12">
@@ -92,13 +94,13 @@
             <flux:button-or-link href="{{ route('admin.home') }}" wire:navigate.hover
                                  class="dark:text-white text-black hover:text-zinc-500">خانه
             </flux:button-or-link>
-            <flux:button-or-link href="{{ route('admin.home') }}" wire:navigate.hover
+            <flux:button-or-link href="{{ route('admin.articles.index') }}" wire:navigate.hover
                                  class="dark:text-white text-black hover:text-zinc-500">مقالات
             </flux:button-or-link>
             {{--            <flux:button-or-link href="{{ route('admin.users') }}" wire:navigate.hover--}}
             {{--                                 class="dark:text-white text-black hover:text-zinc-500">کاربرها--}}
             {{--            </flux:button-or-link>--}}
-            <flux:button-or-link href="{{ route('articles.create') }}" wire:navigate.hover
+            <flux:button-or-link href="{{ route('admin.articles.create') }}" wire:navigate.hover
                                  class="dark:text-white text-black hover:text-zinc-500">ساخت مقاله
             </flux:button-or-link>
         </nav>
@@ -119,11 +121,11 @@
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('خانه') }}
         </flux:navlist.item>
-        <flux:navlist.item icon="book-open-text" :href="route('admin.home')"
+        <flux:navlist.item icon="book-open-text" :href="route('admin.articles.index')"
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('مقالات') }}
         </flux:navlist.item>
-        <flux:navlist.item icon="phone" :href="route('articles.create')"
+        <flux:navlist.item icon="phone" :href="route('admin.articles.create')"
                            :current="request()->routeIs('dashboard')" wire:navigate.hover>
             {{ __('ساخت مقاله') }}
         </flux:navlist.item>

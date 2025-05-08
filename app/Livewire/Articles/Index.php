@@ -8,6 +8,7 @@ use Livewire\Component;
 
 class Index extends Component
 {
+	public $articles;
 	public $category = null;
 	public $search = null;
 
@@ -19,14 +20,14 @@ class Index extends Component
 	public function render()
 	{
 		if ($this->category) {
-			$articles = Category::query()->find($this->category)->articles()->latest()->paginate(8);
+			$this->articles = Category::query()->find($this->category)->articles()->latest()->get();
 		} elseif ($this->search) {
-			$articles = Article::query()->where('title', 'like', '%' . $this->search . '%')->latest()->paginate(8);
+			$this->articles = Article::query()->where('title', 'like', '%' . $this->search . '%')->latest()->get();
 		} else {
-			$articles = Article::query()->latest()->paginate(8);
+			$this->articles = Article::query()->latest()->get();
 		}
 
-		return view('livewire.articles.index', compact('articles'));
+		return view('livewire.articles.index');
 	}
 
 }

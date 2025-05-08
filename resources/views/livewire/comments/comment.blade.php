@@ -8,7 +8,8 @@
                 </div>
             </div>
         @endforeach
-        <form wire:submit.prevent="save" class="space-y-5">
+
+            <form wire:submit.prevent="save" class="space-y-5">
             <flux:textarea wire:model.live="comment" placeholder="نظر خود را بنویسید"/>
             <flux:button type="submit">ثبت</flux:button>
         </form>

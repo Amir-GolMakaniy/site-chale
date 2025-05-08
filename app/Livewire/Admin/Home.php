@@ -2,20 +2,12 @@
 
 namespace App\Livewire\Admin;
 
-use App\Models\Article;
 use Livewire\Component;
 
 class Home extends Component
 {
-
-	public function delete(Article $article)
-	{
-		$article->delete();
-	}
-
 	public function render()
 	{
-		$articles = Article::query()->orderByDesc('id')->get();
-		return view('livewire.admin.home', compact('articles'))->layout('components.layouts.admin');
+		return view('livewire.admin.home')->layout('components.layouts.admin');
 	}
 }

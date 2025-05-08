@@ -12,34 +12,50 @@ class ArticleForm extends Form
 {
 	use WithFileUploads;
 
-	public ?Article $article;
+	public ?Article $article = null;
 
-	#[Validate('required|image')]
-	public $image = "";
+	#[Validate('nullable|image')]
+	public $image = null;
+
+	public ?string $oldImagePath = null;
 
 	#[Validate('required|string')]
-	public $title = "";
+	public $title = '';
 
 	#[Validate('required|string')]
-	public $content = "";
+	public $content = '';
 
 	public function set(Article $article)
 	{
 		$this->article = $article;
-
+		$this->oldImagePath = $article->image->path ?? null;
 		$this->title = $article->title;
-
 		$this->content = $article->content;
 	}
 
-	public function save()
+	public function save(): Article
 	{
 		$this->validate();
 
-		$article = auth()->user()->articles()->updateOrCreate($this->all());
+		$article = $this->article
+			? tap($this->article)->update([
+				'title' => $this->title,
+				'content' => $this->content,
+			])
+			: auth()->user()->articles()->create([
+				'title' => $this->title,
+				'content' => $this->content,
+			]);
 
-		$image = Storage::url($this->image->store('img', 'public'));
+		if ($this->image) {
+			if ($this->oldImagePath) {
+				Storage::disk('public')->delete($this->oldImagePath);
+			}
 
-		$article->image()->create(['path' => $image]);
+			$path = $this->image->store('img', 'public');
+			$article->image()->updateOrCreate([], ['path' => $path]);
+		}
+
+		return $article;
 	}
 }

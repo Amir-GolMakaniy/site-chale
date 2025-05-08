@@ -19,13 +19,13 @@ class DatabaseSeeder extends Seeder
 	public function run(): void
 	{
 		$admin = User::factory()->create([
-			'name' => 'Test User',
-			'email' => 'test@example.com',
+			'name' => 'Amir GolMakani',
+			'email' => 'amir.golmakani@gmail.com',
 		]);
 
 		$editor = User::factory()->create([
-			'name' => 'Amir GolMakani',
-			'email' => 'amir.golmakani@gmail.com',
+			'name' => 'Test User',
+			'email' => 'test@example.com',
 		]);
 
 		$permissions = [
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
 		$admin->assignRole('admin');
 		$editor->assignRole('editor');
 
-//		Article::factory(10)->create();
+		Article::factory(10)->create();
 		Tag::factory(10)->create();
 	}
 }

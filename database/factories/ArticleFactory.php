@@ -20,7 +20,7 @@ class ArticleFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			'title' => $this->faker->title(),
+			'title' => $this->faker->name(),
 			'content' => $this->faker->text(),
 			'user_id' => User::factory(),
 			'category_id' => Category::factory(),

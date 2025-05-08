@@ -3,7 +3,7 @@
         <div class="p-4">
             <a href="{{ route('articles.show',$article->slug) }}" wire:navigate.hover>
                 <img class="w-full object-cover duration-200 hover:scale-105 rounded-sm"
-                     src="{{ asset('img/1.png') }}">
+                     src="{{ Storage::url($article->image->path) }}" alt="">
             </a>
         </div>
         <div class="px-4">
@@ -12,7 +12,8 @@
         </div>
         <div class="p-4">
             <a href="{{ route('articles.show',$article->slug) }}"
-               class="text-1xl font-bold hover:text-zinc-500 line-clamp-2" wire:navigate.hover>{{ $article->content }}</a>
+               class="text-1xl font-bold hover:text-zinc-500 line-clamp-2"
+               wire:navigate.hover>{!! $article->content !!}</a>
         </div>
     </div>
 </div>

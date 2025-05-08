@@ -1,7 +1,6 @@
 <?php
 
-use App\Livewire\Admin\articles\Create;
-use App\Livewire\Admin\articles\Edit;
+use App\Livewire\Admin\Articles\Form;
 use App\Livewire\Articles\Index;
 use App\Livewire\Articles\Show;
 use App\Livewire\Home;
@@ -17,13 +16,17 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 		->middleware('role:admin')
 		->name('admin.home');
 
-	Route::get('/article/create', Create::class)
+	Route::get('/articles', \App\Livewire\Admin\Articles\Index::class)
 		->middleware('role:admin|editor')
-		->name('articles.create');
+		->name('admin.articles.index');
 
-	Route::get('/article/{article}/edit', Edit::class)
+	Route::get('/articles/create', Form::class)
 		->middleware('role:admin|editor')
-		->name('articles.edit');
+		->name('admin.articles.create');
+
+	Route::get('/articles/{article}/edit', Form::class)
+		->middleware('role:admin|editor')
+		->name('admin.articles.edit');
 });
 
 Route::view('dashboard', 'dashboard')
