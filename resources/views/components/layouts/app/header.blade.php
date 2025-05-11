@@ -13,9 +13,11 @@
         class="p-10 mt-4 flex items-center justify-between rounded-2xl bg-zinc-50 shadow-xl dark:border-zinc-700 dark:bg-zinc-900">
     <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left"/>
 
-    <a href="{{ route('home') }}" class="lg:mx-0 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0"
+    <a href="{{ route('home') }}" class="flex items-center justify-center gap-2"
        wire:navigate.hover>
-        <x-app-logo/>
+        <img src="{{ asset('img/BH_accretion_disk_viz_desktop.png') }}" alt=""
+             class="w-20 rounded-xl">
+        <span class="hidden lg:flex text-md font-bold">سایت چاله</span>
     </a>
 
     <livewire:layouts.search/>
@@ -87,7 +89,8 @@
 
                     <form method="POST" action="{{ route('logout') }}" class="w-full">
                         @csrf
-                        <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
+                        <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle"
+                                        class="w-full cursor-pointer">
                             {{ __('خروج') }}
                         </flux:menu.item>
                     </form>
@@ -100,9 +103,10 @@
 <div class="hidden lg:flex justify-center">
     <div class="bg-zinc-100 mb-4 dark:bg-zinc-950 w-11/12 rounded-ee-3xl rounded-es-3xl p-6 flex items-center justify-center">
         <nav class="hidden md:flex space-x-10">
-            <a href="{{ route('home') }}" wire:navigate.hover class="dark:text-white text-black hover:text-zinc-500">خانه</a>
+            <a href="{{ route('home') }}" wire:navigate.hover
+               class="dark:text-white text-black hover:text-zinc-500 transition">خانه</a>
             <a href="{{ route('articles.index') }}" wire:navigate.hover
-               class="dark:text-white text-black hover:text-zinc-500">مقالات</a>
+               class="dark:text-white text-black hover:text-zinc-500 transition">مقالات</a>
         </nav>
     </div>
 </div>
@@ -111,32 +115,30 @@
               class="lg:hidden border-r border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
     <flux:sidebar.toggle class="lg:hidden" icon="x-mark"/>
 
-    <a href="{{ route('home') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse"
+    <a href="{{ route('home') }}" class="flex items-center justify-center gap-2"
        wire:navigate.hover>
-        <x-app-logo/>
+        <img src="{{ asset('img/BH_accretion_disk_viz_desktop.png') }}" alt=""
+             class="w-20 rounded-xl">
+        <span class="flex text-md font-bold">سایت چاله</span>
     </a>
 
     <flux:navlist variant="outline">
-        <flux:navlist.item icon="home" :href="route('home')"
-                           :current="request()->routeIs('dashboard')" wire:navigate.hover>
-            {{ __('خانه') }}
+        <flux:navlist.item icon="home" :href="route('home')" wire:navigate.hover>
+            خانه
         </flux:navlist.item>
-        <flux:navlist.item icon="book-open-text" :href="route('articles.index')"
-                           :current="request()->routeIs('dashboard')" wire:navigate.hover>
-            {{ __('مقالات') }}
-        </flux:navlist.item>
-        <flux:navlist.item icon="phone" :href="route('home')"
-                           :current="request()->routeIs('dashboard')" wire:navigate.hover>
-            {{ __('ارتباط با ما') }}
+        <flux:navlist.item icon="book-open-text" :href="route('articles.index')" wire:navigate.hover>
+            مقالات
         </flux:navlist.item>
     </flux:navlist>
 
     <flux:spacer/>
 
     <flux:navlist variant="outline">
-        <flux:navlist.item icon="magnifying-glass" :href="route('home')"
-                           :current="request()->routeIs('dashboard')" wire:navigate.hover>
-            {{ __('جستجو') }}
-        </flux:navlist.item>
+        <form action="{{ route('articles.index') }}" class="flex flex-row">
+            <flux:button type="submit" class="cursor-pointer">
+                <flux:icon.magnifying-glass class=""/>
+            </flux:button>
+            <flux:input wire:model.live="search" class="" placeholder="دنبال چی میگردی؟"/>
+        </form>
     </flux:navlist>
 </flux:sidebar>
