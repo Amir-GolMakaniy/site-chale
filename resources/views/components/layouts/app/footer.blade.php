@@ -6,7 +6,7 @@
         <a href="{{ route('home') }}" class="flex items-center justify-center gap-2"
            wire:navigate.hover>
             <img src="{{ asset('img/BH_accretion_disk_viz_desktop.png') }}" alt=""
-                 class="w-20 rounded-xl">
+                 class="w-10 rounded-xl">
             <span class="hidden lg:flex text-md font-bold">سایت چاله</span>
         </a>
 
