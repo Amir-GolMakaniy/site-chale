@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Article;
-use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -20,7 +18,7 @@ class DatabaseSeeder extends Seeder
 	{
 		$admin = User::factory()->create([
 			'name' => 'Amir GolMakani',
-			'email' => 'amir.golmakani@gmail.com',
+			'email' => 'amir.golmakaniy@gmail.com',
 		]);
 
 		$editor = User::factory()->create([
@@ -46,8 +44,5 @@ class DatabaseSeeder extends Seeder
 
 		$admin->assignRole('admin');
 		$editor->assignRole('editor');
-
-		Article::factory(10)->create();
-		Tag::factory(10)->create();
 	}
 }

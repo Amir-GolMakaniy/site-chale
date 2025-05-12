@@ -29,6 +29,6 @@ class Form extends Component
 
 	public function render()
 	{
-		return view('livewire.admin.articles.form')->layout('components.layouts.admin');
+		return view('livewire.admin.articles.form');
 	}
 }

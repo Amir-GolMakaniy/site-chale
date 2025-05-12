@@ -20,10 +20,13 @@ class ArticleForm extends Form
 	public ?string $oldImagePath = null;
 
 	#[Validate('required|string')]
-	public $title = '';
+	public $title = null;
 
 	#[Validate('required|string')]
-	public $content = '';
+	public $content = null;
+
+	#[Validate('nullable')]
+	public $category = null;
 
 	public function set(Article $article)
 	{
@@ -31,6 +34,7 @@ class ArticleForm extends Form
 		$this->oldImagePath = $article->image->path ?? null;
 		$this->title = $article->title;
 		$this->content = $article->content;
+		$this->category = $article->category_id;
 	}
 
 	public function save(): Article
@@ -41,10 +45,12 @@ class ArticleForm extends Form
 			? tap($this->article)->update([
 				'title' => $this->title,
 				'content' => $this->content,
+				'category_id' => $this->category,
 			])
 			: auth()->user()->articles()->create([
 				'title' => $this->title,
 				'content' => $this->content,
+				'category_id' => $this->category,
 			]);
 
 		if ($this->image) {

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'سایت چاله' }}</title>
     @include('partials.head')
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.css"/>
+    <script src="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.umd.js"></script>
 </head>
 
 <body class="bg-white dark:bg-zinc-800 mx-auto w-11/12 lg:w-9/12">
@@ -107,6 +109,16 @@
                class="dark:text-white text-black hover:text-zinc-500 transition">خانه</a>
             <a href="{{ route('articles.index') }}" wire:navigate.hover
                class="dark:text-white text-black hover:text-zinc-500 transition">مقالات</a>
+            @role('admin|editor')
+            <a href="{{ route('admin.articles.index') }}" wire:navigate.hover
+               class="dark:text-white text-black hover:text-zinc-500 transition">مقالات ساخته شده</a>
+            <a href="{{ route('admin.articles.create') }}" wire:navigate.hover
+               class="dark:text-white text-black hover:text-zinc-500 transition">ساخت مقاله</a>
+            <a href="{{ route('admin.categories.index') }}" wire:navigate.hover
+               class="dark:text-white text-black hover:text-zinc-500 transition">دسته بندی ها</a>
+            <a href="{{ route('admin.categories.create') }}" wire:navigate.hover
+               class="dark:text-white text-black hover:text-zinc-500 transition">ساخت دسته بندی</a>
+            @endrole
         </nav>
     </div>
 </div>
@@ -129,6 +141,20 @@
         <flux:navlist.item icon="book-open-text" :href="route('articles.index')" wire:navigate.hover>
             مقالات
         </flux:navlist.item>
+        @role('admin|editor')
+        <flux:navlist.item icon="book-open-text" :href="route('admin.articles.index')" wire:navigate.hover>
+            مقاله های ساخته شده
+        </flux:navlist.item>
+        <flux:navlist.item icon="book-open-text" :href="route('admin.articles.create')" wire:navigate.hover>
+            ساخت مقاله
+        </flux:navlist.item>
+        <flux:navlist.item icon="book-open-text" :href="route('admin.categories.index')" wire:navigate.hover>
+            دسته بندی ها
+        </flux:navlist.item>
+        <flux:navlist.item icon="book-open-text" :href="route('admin.categories.create')" wire:navigate.hover>
+            ساخت دسته بندی
+        </flux:navlist.item>
+        @endrole
     </flux:navlist>
 
     <flux:spacer/>
